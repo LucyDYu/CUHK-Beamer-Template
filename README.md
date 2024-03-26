@@ -6,6 +6,7 @@ This template is adapted from <https://github.com/mssun/cuhk-beamer>.
 
 - Changed cite and footnote style. Numbered citations and short footnote.
 - Changed outline style. 
+- Add auto frame title with framecount.
 
 ## Demo
 
