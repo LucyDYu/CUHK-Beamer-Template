@@ -1,6 +1,53 @@
 \documentclass{beamer}
 % \documentclass[handout]{beamer}
 \usepackage{cuhkbeamer}
+\addbibresource{ref.bib} % ref bib file
+\usepackage{url}
+\makeatletter
+\newcommand*{\mkblankfootnote}[1]{%
+  \begingroup
+    \renewcommand\thefootnote{}%
+    \footnotetext{\bibfootnotewrapper{#1}}%
+  \endgroup
+}
+
+\newcommand*{\mkbibsupercite}[1]{%
+  \def\cbx@savedcites{\cbx@footfullcite}%
+  \mkbibsuperscript{\mkbibbrackets{#1}}%
+  \cbx@savedcites}
+
+\DeclareCiteCommand{\supercite}[\mkbibsupercite]
+  {\gdef\cbx@savedkeys{}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}%
+     {}%
+   \xappto\cbx@savedkeys{\thefield{entrykey},}}
+  {\supercitedelim}
+  {\protected@xappto\cbx@savedcites{%
+     [\thefield{prenote}][\thefield{postnote}]{\cbx@savedkeys}}}
+
+\DeclareCiteCommand{\cbx@footfullcite}
+  {}
+  {
+    \mkblankfootnote{%
+     \printtext[labelnumberwidth]{%
+       \usebibmacro{cite}%
+     }%
+   \setunit{\addspace}%
+   \printtext {%
+       \printnames{labelname}%
+       \setunit{\addcomma\space}%
+       \printfield[italic]{title}}%
+       \setunit{\addcomma\space}%
+       \printfield{year}%
+      }
+  }
+  {}
+  {}
+
+
+\makeatother
+
 
 
 \title[Short title]{Your Title}
@@ -23,7 +70,22 @@
 % Outline
 \begin{frame}{Outline}
     \label{outline}
-    \tableofcontents{}
+    \tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+  \begin{frame} 
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+} % Display an outline at the beginning of each new section.
+
+
+\slidesection{Cite and Footnote}
+
+\begin{frame}{Cite and Footnote}
+    Attention Is All You Need \supercite{Vaswani2017Attention} 
 \end{frame}
 
 % Text, Lists, Tables and Figures
@@ -43,6 +105,7 @@
     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     \begin{figure}
         \includegraphics[width=0.5\textwidth]{images/convex_surface.png}
+    \caption{Convex Surface}
     \end{figure}
 \end{frame}
 
@@ -78,7 +141,8 @@
         \column{0.5\textwidth}
         \onslide<2->\begin{figure}
             \includegraphics[width=0.8\textwidth]{images/lenna.jpg}
-        \end{figure}
+            \caption{Lenna}
+    \end{figure}
     \end{columns}
 \end{frame}
 
@@ -155,8 +219,12 @@
 
 % References
 \slidesection{References}
+\begin{frame}[allowframebreaks]{References}
+\frametitle{References}
+\printbibliography
+\end{frame}
 
-\begin{frame}{References}
+\begin{frame}{Reference Links}
     \begin{itemize}
         \item \href{https://www.overleaf.com/learn}{Overleaf Documentation}
         \item \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{Learn LaTeX in 30 Minutes}
