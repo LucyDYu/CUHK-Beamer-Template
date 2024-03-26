@@ -2,7 +2,7 @@
 % \documentclass[handout]{beamer}
 \usepackage{cuhkbeamer}
 \addbibresource{ref.bib} % ref bib file
-\usepackage{url}
+
 \makeatletter
 \newcommand*{\mkblankfootnote}[1]{%
   \begingroup
@@ -48,7 +48,37 @@
 
 \makeatother
 
+\AtEveryBibitem{%
+    % Remove certain fields 
+    \clearfield{doi}
+    \clearfield{urlyear} % Remove urldate since urldate is split up into urlyear, urlmonth and urlday
+    
+    \ifentrytype{misc}{
+    %True
+    }
+    {% False
+     %If not @misc type
+      \clearfield{url} % Clear url field
+    }%
+}
 
+\newcounter{framecount} % Counter for frames
+\setcounter{framecount}{1} % Initialize framecount to 1
+
+\AtBeginSection % Reset framecount at the beginning of each section
+{
+    \setcounter{framecount}{1}
+}
+
+\newcommand{\frameTitle}[1]{% Custom command for frame title
+    #1 \Roman{framecount} % Title name, and framecount in Roman numerals
+    \stepcounter{framecount}% Increment framecount
+}
+
+\newcommand{\frameTitleDefault}{% Custom command for frame title
+    \secname \ \Roman{framecount} % Default Section title, and framecount in Roman numerals
+    \stepcounter{framecount}% Increment framecount
+}
 
 \title[Short title]{Your Title}
 \subtitle{Your Subtitle}
@@ -84,8 +114,12 @@
 
 \slidesection{Cite and Footnote}
 
-\begin{frame}{Cite and Footnote}
+\begin{frame}{\frameTitleDefault}
     Attention Is All You Need \supercite{Vaswani2017Attention} 
+\end{frame}
+
+\begin{frame}{\frameTitleDefault}
+    Long Short-Term Memory \supercite{hochreiter1997long}
 \end{frame}
 
 % Text, Lists, Tables and Figures
