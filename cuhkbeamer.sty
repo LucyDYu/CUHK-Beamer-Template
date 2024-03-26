@@ -6,8 +6,8 @@
 \usepackage{listings}
 \usepackage{comment}
 \usepackage{hyperref}
-\usepackage[maxnames=100]{biblatex}
-\usepackage{xeCJK}
+\usepackage[maxnames=6,style=numeric, sorting=none]{biblatex}
+% \usepackage{xeCJK}
 \usepackage{tcolorbox}
 \usepackage{url}
 \usepackage{caption}
@@ -31,8 +31,13 @@
 \usetikzlibrary{patterns}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\defaultfontfeatures{Mapping=tex-text}
+% \defaultfontfeatures{Mapping=tex-text}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Numbering
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{caption}[numbered]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,6 +51,7 @@
 \useoutertheme{infolines}
 \usetheme[height=15mm]{Madrid}
 \setbeamertemplate{navigation symbols}{}
+
 
 \usefonttheme{professionalfonts}
 
@@ -97,7 +103,7 @@
 
 \hypersetup{
     colorlinks,
-    linkcolor=,
+    linkcolor=cuhkpurple,
     urlcolor=cuhkpurple
 }
 
@@ -108,9 +114,9 @@
 
 \newcommand{\slidesection}[1]{
     \section{#1}
-    \begin{frame}[c]{}
-        \LARGE{Part \thesection. #1}
-    \end{frame}
+    % \begin{frame}[c]{}
+    %     \LARGE{Part \thesection. #1}
+    % \end{frame}
 }
 \newcommand{\emphacolor}[1]{\textbf{\textcolor{cuhkpurple}{#1}}}
 \newcommand{\mathemphacolor}[1]{\mathbf{\textcolor{cuhkpurple}{#1}}}
