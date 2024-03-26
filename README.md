@@ -4,6 +4,8 @@ Beamer template with CUHK colors and logos. Please be noted that this is **NOT**
 
 This template is adapted from <https://github.com/mssun/cuhk-beamer>.
 
+Changed cite and footnote style. Numbered citations and short footnote.
+
 ## Demo
 
 Please refer to 'sample.tex' for the usage.
