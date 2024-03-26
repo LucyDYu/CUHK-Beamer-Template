@@ -9,9 +9,11 @@ This template is adapted from <https://github.com/mssun/cuhk-beamer>.
 Please refer to 'sample.tex' for the usage.
 
 ![Cover](README.assets/cover.png)
+![Cite and Footnote](README.assets/Cite_and_Footnote.png)
 ![Text and lists](README.assets/text_lists.png)
 ![Columns](README.assets/columns.png)
 ![Blocks](README.assets/math_blocks.png)
+![Reference](README.assets/Reference.png)
 
 ## License
 
