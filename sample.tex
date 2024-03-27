@@ -13,7 +13,7 @@
 
 \newcommand*{\mkbibsupercite}[1]{%
   \def\cbx@savedcites{\cbx@footfullcite}%
-  \mkbibsuperscript{\mkbibbrackets{#1}}%
+  \mkbibsuperscript{\mkbibbrackets{#1}\kern-1em}%
   \cbx@savedcites}
 
 \DeclareCiteCommand{\supercite}[\mkbibsupercite]
@@ -115,7 +115,7 @@
 \slidesection{Cite and Footnote}
 
 \begin{frame}{\frameTitleDefault}
-    Attention Is All You Need \supercite{Vaswani2017Attention} 
+    Attention Is All You Need \supercite{Vaswani2017Attention}
 \end{frame}
 
 \begin{frame}{\frameTitleDefault}
